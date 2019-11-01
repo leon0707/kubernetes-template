@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: web-repl
+  labels:
+    release: "0"
+spec:
+  selector:
+    matchLabels:
+      app: webapp
+  replicas: 2 
+  # pod defination 
+  template:
+    metadata:
+      name: webapp
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5
